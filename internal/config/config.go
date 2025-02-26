@@ -28,9 +28,14 @@ type AdminAUth struct {
 }
 
 type Server struct {
+	TLS       `yaml:"TLS"`
 	Port      string `yaml:"Port"`
 	User      `yaml:"User"`
 	AdminAUth `yaml:"AdminAUth"`
+}
+
+type TLS struct {
+	Enabled bool `yaml:"Enabled"`
 }
 
 func LoadConfig(filename string) (*Config, error) {

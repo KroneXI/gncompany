@@ -14,6 +14,7 @@ import (
 
 // App представляет основное приложение
 type App struct {
+	cfg    *config.Config
 	server *http.Server
 	lg     *logger.Logger
 }
@@ -48,15 +49,35 @@ func NewApp(lg *logger.Logger) (*App, error) {
 	}
 
 	return &App{
+		cfg:    cfg,
 		server: server,
 		lg:     lg,
 	}, nil
 }
 
-// Run запускает HTTP-сервер
 func (a *App) Run() error {
+	// TODO: Запуск HTTPS-сервера, пока проблемы в связи отсутствием доменного имени
+	return a.runHTTP()
+}
+
+// runHTTPS запускает HTTPS-сервер
+//
+//nolint:unused
+func (a *App) runHTTPS() error {
+	certFile := "server.crt"
+	keyFile := "server.key"
+
+	if err := a.server.ListenAndServeTLS(certFile, keyFile); err != nil {
+		return fmt.Errorf("Ошибка запуска HTTPS-сервера: %w", err)
+	}
+
+	return nil
+}
+
+// runHTTP запускает HTTP-сервер
+func (a *App) runHTTP() error {
 	if err := a.server.ListenAndServe(); err != nil {
-		return fmt.Errorf("Ошибка запуска сервера: %w", err)
+		return fmt.Errorf("Ошибка запуска HTTP-сервера: %w", err)
 	}
 
 	return nil
