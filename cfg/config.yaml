@@ -1,0 +1,14 @@
+Server:
+  Port: "12345"
+  User:
+    Groups:
+      - Messenger: "Instagram"
+        URL: "https://www.instagram.com/sega.gn"
+        ImageURL: "https://freepnglogo.com/images/all_img/1725819461instagram-logo.png"
+      - Messenger: "Telegram"
+        URL: "https://t.me/krd_gn_agent"
+        ImageURL: "https://upload.wikimedia.org/wikipedia/commons/8/83/Telegram_2019_Logo.svg"
+    PhoneNumber: "89897688392"
+  AdminAUth:
+    User: "mysecretuser"
+    Password: "mysecretpassword"

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>{{ .Styles }}</style>
+</head>
+<body>
+    <header>
+        <h1>Привет, меня зовут Сергей и я помогу найти Ваш идеальный дом или квартиру</h1>
+    </header>
+    <main>
+        <div class="links">
+            {{ range .Groups }}
+            <a href="{{ .URL }}" target="_blank" class="link">
+                <img src="{{ .ImageURL }}" alt="{{ .Messenger }} логотип">
+                {{ .Messenger }}
+            </a>
+            {{ end }}
+        </div>
+    </main>
+<footer>
+    <p>Телефон и WhatsApp:</p>
+    <a href="tel:{{ .PhoneNumber }}" class="phone-number">{{ .PhoneNumber }}</a>
+    <p>С уважением, Сергей Гнып</p>
+</footer>
+</body>
+</html>
