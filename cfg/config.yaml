@@ -1,4 +1,6 @@
 Server:
+  TLS:
+    Enabled: true
   Port: "12345"
   User:
     Groups:
